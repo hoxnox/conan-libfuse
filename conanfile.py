@@ -26,7 +26,7 @@ class LibFuseConan(NxConanFile):
     def do_build(self):
         tools.untargz("libfuse-{v}.tar.gz".format(v=self.version), "{staging_dir}/src".format(staging_dir=self.staging_dir))
         shared_definition = "--enable-static --disable-shared"
-        if self.options["shared"]:
+        if self.options.shared:
             shared_definition = "--enable-shared --disable-static"
         chdir("{staging_dir}/src/fuse-{v}".format(staging_dir=self.staging_dir, v=self.version))
         env_build = AutoToolsBuildEnvironment(self)

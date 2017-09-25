@@ -7,6 +7,7 @@ username = os.getenv("CONAN_USERNAME", "hoxnox")
 class LibFuseTestConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     requires = "libfuse/2.9.7@%s/%s" % (username, channel)
+    default_options="libfuse:shared=False"
     generators = "cmake"
 
     def build(self):
